@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { Pane } from "evergreen-ui";
+import useCharacters from "./useCharacters";
+import CharactersList from "./CharactersList";
+import CharacterDetails from "./CharacterDetails";
+import Search from "./Search"
+import "./App.css";
 
 function App() {
+  const { characters } = useCharacters();
+  const [selected, setSelected] = useState();
+  console.log("SELECTED", selected);
+
+  useEffect(() => {
+    console.log("selecteed", selected);
+  }, [characters, selected]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Pane display="flex">
+        <CharactersList characters={characters} setSelected={setSelected} />
+        <Pane display="flex" flexDirection="column">
+          <Search characters={characters} setSelected={setSelected}/>
+          <CharacterDetails selected={selected} setSelected={setSelected} />
+        </Pane>
+      </Pane>
     </div>
   );
 }
