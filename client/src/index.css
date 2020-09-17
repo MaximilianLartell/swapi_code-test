@@ -1,3 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+* {
+  vertical-align: baseline;
+  font-weight: inherit;
+  font-family: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  border: 0 none;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+}
+
 html {
-    font-family: "Quicksand", sans-serif;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(42, 42, 56);
+  font-family: "Quicksand", sans-serif;
+  text-align: center;
+  color: whitesmoke;
+  font-weight: 100;
+  font-size: medium;
+}
+
+h3 {
+  font-size: large;
+  margin: 10px;
+}
+
+li {
+  font-weight: lighter;
+  font-size: 10px;
+} 
+
+aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+main {
+  margin-top: 30px;
+  width: 100%;
+}
+
+.card {
+  color: rgb(42, 42, 56);
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+.card_content {
+  padding-bottom: 40px;
+}
+
+.search-field {
+  margin-bottom: 20px;
+}
+
+.menu-item {
+  width: 100%;
+  height: 30px;
+}
+
+.menu-item:hover {
+  color: #a7baca;
+}
+
+.menu-item:active {
+  color: #b9e0ff;
+}
+
+@media only screen and (min-width: 600px) {
+  .App {
+    display: flex;
+    flex-direction: row-reverse;
   }
+  aside {
+    width: 300px;
+    margin: 50px 0 0 50px;
+    border: solid 1px rgb(67, 70, 87);
+    border-radius: 10px;
+    height: 450px;
+    overflow-y: scroll;
+    padding: 10px 0;
+    }
+
+  .card {
+    width: 450px;
+    margin: auto;
+    border-radius: 10px;
+  }
+}

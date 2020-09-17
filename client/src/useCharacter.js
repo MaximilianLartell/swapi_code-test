@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function useCharacter(selected) {
@@ -10,7 +10,7 @@ function useCharacter(selected) {
         setCharacter((prev) => ({ ...prev, homeworld: res.data.name }));
       });
     } else {
-      setCharacter((prev) => ({ ...prev, homeworld: "unknown" }));
+      setCharacter((prev) => ({ ...prev, homeworld: "n/a" }));
     }
   };
 
@@ -21,12 +21,12 @@ function useCharacter(selected) {
         axios
           .get(filmUrl)
           .then((res) => {
-            films.push(res.data.title);
+            films = [...films, res.data.title];
           })
-          .then((data) => setCharacter((prev) => ({ ...prev, films })));
+          .then(() => setCharacter((prev) => ({ ...prev, films })));
       });
     } else {
-      setCharacter((prev) => ({ ...prev, films: "unknown" }));
+      setCharacter((prev) => ({ ...prev, films: "n/a" }));
     }
   };
 
@@ -36,7 +36,7 @@ function useCharacter(selected) {
         setCharacter((prev) => ({ ...prev, species: res.data.name }));
       });
     } else {
-      setCharacter((prev) => ({ ...prev, species: "unknown" }));
+      setCharacter((prev) => ({ ...prev, species: "n/a" }));
     }
   };
 
@@ -49,10 +49,10 @@ function useCharacter(selected) {
           .then((res) => {
             starships.push(res.data.name);
           })
-          .then((data) => setCharacter((prev) => ({ ...prev, starships })));
+          .then(() => setCharacter((prev) => ({ ...prev, starships })));
       });
     } else {
-      setCharacter((prev) => ({ ...prev, starships: "unknown" }));
+      setCharacter((prev) => ({ ...prev, starships: "n/a" }));
     }
   };
 
@@ -63,12 +63,12 @@ function useCharacter(selected) {
         axios
           .get(vehicleUrl)
           .then((res) => {
-            vehicles.push(res.data.name);
+            vehicles = [...vehicles, res.data.name];
           })
           .then((data) => setCharacter((prev) => ({ ...prev, vehicles })));
       });
     } else {
-      setCharacter((prev) => ({ ...prev, vehicles: "unknown" }));
+      setCharacter((prev) => ({ ...prev, vehicles: "n/a" }));
     }
   };
 
@@ -81,16 +81,16 @@ function useCharacter(selected) {
         eye_color: selected.eye_color,
         gender: selected.gender,
         hair_color: selected.hair_color,
-        height: selected.height,
         mass: selected.mass,
         skin_color: selected.skin_color,
-        });
+      });
       getHomeworld();
       getFilms();
       getSpecies();
       getStarships();
       getVehicles();
     }
+    // eslint-disable-next-line
   }, [selected]);
 
   return {
