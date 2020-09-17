@@ -56,21 +56,6 @@ function useCharacter(selected) {
     }
   };
 
-  const getVehicles = () => {
-    if (selected.vehicles.length > 0) {
-      let vehicles = [];
-      selected.vehicles.forEach((vehicleUrl) => {
-        axios
-          .get(vehicleUrl)
-          .then((res) => {
-            vehicles = [...vehicles, res.data.name];
-          })
-          .then((data) => setCharacter((prev) => ({ ...prev, vehicles })));
-      });
-    } else {
-      setCharacter((prev) => ({ ...prev, vehicles: "n/a" }));
-    }
-  };
 
   useEffect(() => {
     if (selected) {
@@ -88,7 +73,6 @@ function useCharacter(selected) {
       getFilms();
       getSpecies();
       getStarships();
-      getVehicles();
     }
     // eslint-disable-next-line
   }, [selected]);

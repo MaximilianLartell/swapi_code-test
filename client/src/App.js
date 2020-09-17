@@ -7,25 +7,26 @@ import Search from "./Search";
 function App() {
   const { characters } = useCharacters();
   const [selected, setSelected] = useState();
-  const [errorMessage, setErrorMessage] = useState();
+  const [error, setError] = useState();
 
   return (
     <div className="App">
       <main>
         <Search
-          setErrorMessage={setErrorMessage}
+          setError={setError}
           characters={characters}
           setSelected={setSelected}
         />
         <CharacterDetails
-          errorMessage={errorMessage}
+          error={error}
+          setError={setError}
           selected={selected}
           setSelected={setSelected}
         />
       </main>
       <aside className="side-bar">
         <CharactersList
-          setErrorMessage={setErrorMessage}
+          setError={setError}
           characters={characters}
           setSelected={setSelected}
         />

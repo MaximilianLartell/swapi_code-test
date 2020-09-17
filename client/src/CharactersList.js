@@ -1,6 +1,6 @@
 import React from "react";
 
-function CharactersList({ characters, setSelected, setErrorMessage }) {
+function CharactersList({ characters, setSelected, setError }) {
   return (
     <div>
       {characters.map((char) => (
@@ -8,7 +8,7 @@ function CharactersList({ characters, setSelected, setErrorMessage }) {
           className="menu-item"
           key={char.name}
           onClick={() => {
-            setErrorMessage();
+            setError();
             setSelected(char);
           }}
         >

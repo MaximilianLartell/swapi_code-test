@@ -2,14 +2,27 @@ import React from "react";
 import { IconButton, CrossIcon } from "evergreen-ui";
 import useCharacter from "./useCharacter";
 
-function CharacterDetails({ selected, setSelected, errorMessage }) {
+function CharacterDetails({ selected, setSelected, error, setError }) {
   const { character } = useCharacter(selected);
 
   const render = () => {
-    if (errorMessage) {
+    if (error) {
       return (
-        <div className="card_content">
-          <h4>{errorMessage}</h4>
+        <div>
+          <div className="card_close-icon">
+            <IconButton
+              marginBottom={16}
+              appearance="minimal"
+              icon={CrossIcon}
+              onClick={() => {
+                setError();
+                setSelected(undefined);
+              }}
+            />
+          </div>
+          <div className="card_content">
+            <p>{error}</p>
+          </div>
         </div>
       );
     }
@@ -25,7 +38,7 @@ function CharacterDetails({ selected, setSelected, errorMessage }) {
             />
           </div>
           <div className="card_content">
-            <h4>{character.name || selected.noMatch}</h4>
+            <p>{character.name}</p>
             <p>Birth year: {character.birth_year}</p>
             <p>Homeplanet: {character.homeworld}</p>
             <p>Gender: {character.gender}</p>
