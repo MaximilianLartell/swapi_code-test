@@ -2,10 +2,17 @@ import React from "react";
 import { IconButton, CrossIcon } from "evergreen-ui";
 import useCharacter from "./useCharacter";
 
-function CharacterDetails({ selected, setSelected }) {
+function CharacterDetails({ selected, setSelected, errorMessage }) {
   const { character } = useCharacter(selected);
 
   const render = () => {
+    if (errorMessage) {
+      return (
+        <div className="card_content">
+          <h4>{errorMessage}</h4>
+        </div>
+      );
+    }
     if (selected) {
       return (
         <div>
@@ -45,7 +52,7 @@ function CharacterDetails({ selected, setSelected }) {
     }
   };
 
-  return <div className='card'>{render()}</div>;
+  return <div className="card">{render()}</div>;
 }
 
 export default CharacterDetails;

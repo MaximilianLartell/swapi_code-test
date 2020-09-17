@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SearchInput, Button } from "evergreen-ui";
 
-function Search({ setSelected, characters }) {
+function Search({ setSelected, characters, setErrorMessage }) {
   const [value, setValue] = useState("");
 
   const filterCharacters = () => {
@@ -9,12 +9,13 @@ function Search({ setSelected, characters }) {
     const match = characters.find((char) => char.name.search(re) !== -1);
     if (match && value !== "") {
       setSelected(match);
+      setErrorMessage();
     }
     if (value === "") {
-      setValue(`Please enter a name`);
+      setErrorMessage(`Please enter a name`);
     }
     if (!match) {
-      setValue(`${value} not found`);
+      setErrorMessage(`${value} not found`);
     }
   };
 
