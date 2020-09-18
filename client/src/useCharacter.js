@@ -55,19 +55,12 @@ function useCharacter(selected) {
       setCharacter((prev) => ({ ...prev, starships: "n/a" }));
     }
   };
-
-
   useEffect(() => {
     if (selected) {
       setCharacter({
         name: selected.name,
-        height: selected.height,
         birth_year: selected.birth_year,
-        eye_color: selected.eye_color,
         gender: selected.gender,
-        hair_color: selected.hair_color,
-        mass: selected.mass,
-        skin_color: selected.skin_color,
       });
       getHomeworld();
       getFilms();
