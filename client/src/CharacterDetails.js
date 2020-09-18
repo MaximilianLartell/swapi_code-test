@@ -16,7 +16,7 @@ function CharacterDetails({ selected, setSelected, error, setError }) {
               icon={CrossIcon}
               onClick={() => {
                 setError();
-                setSelected(undefined);
+                setSelected();
               }}
             />
           </div>
@@ -34,7 +34,7 @@ function CharacterDetails({ selected, setSelected, error, setError }) {
               marginBottom={16}
               appearance="minimal"
               icon={CrossIcon}
-              onClick={() => setSelected(undefined)}
+              onClick={() => setSelected()}
             />
           </div>
           <div className="card_content">
@@ -56,7 +56,7 @@ function CharacterDetails({ selected, setSelected, error, setError }) {
               {character.films ? (
                 character.films.map((el) => <li key={el}>{el}</li>)
               ) : (
-                <li>...loading</li>
+                <li></li>
               )}
             </ul>
           </div>

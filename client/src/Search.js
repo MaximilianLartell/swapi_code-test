@@ -7,9 +7,10 @@ function Search({ setSelected, characters, setError }) {
   const filterCharacters = () => {
     const re = new RegExp("\\b" + value + "\\b", "i");
     const match = characters.find((char) => char.name.search(re) !== -1);
+
     if (match && value !== "") {
-      setSelected(match);
       setError();
+      setSelected(match);
     }
     if (value === "") {
       setError(`Please enter a name`);

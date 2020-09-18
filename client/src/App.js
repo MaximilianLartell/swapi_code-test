@@ -5,9 +5,9 @@ import CharacterDetails from "./CharacterDetails";
 import Search from "./Search";
 
 function App() {
-  const { characters } = useCharacters();
   const [selected, setSelected] = useState();
   const [error, setError] = useState();
+  const { characters } = useCharacters(setError);
 
   return (
     <div className="App">
@@ -24,7 +24,7 @@ function App() {
           setSelected={setSelected}
         />
       </main>
-      <aside className="side-bar">
+      <aside>
         <CharactersList
           setError={setError}
           characters={characters}

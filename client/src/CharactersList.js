@@ -1,6 +1,6 @@
 import React from "react";
 
-function CharactersList({ characters, setSelected, setError }) {
+function CharactersList({ characters, setError, setSelected }) {
   return (
     <div>
       {characters.map((char) => (
